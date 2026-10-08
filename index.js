@@ -74,7 +74,7 @@ function getAverageUsersPerRole() {
     return 0;
   }
 
-  return users.length;
+  return users.length / roles.length;
 }
 
 module.exports = {
