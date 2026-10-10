@@ -5,6 +5,7 @@ const users = [
   { id: 4, name: "Karan", role: "user", active: true }
 ];
 
+function deactivateUser(user) {
   user.active = false;
   return true;
 }
