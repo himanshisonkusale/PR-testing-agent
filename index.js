@@ -5,29 +5,6 @@ const users = [
   { id: 4, name: "Karan", role: "user", active: true }
 ];
 
-function findUserById(id) {
-  return users.find((user) => user.id === id);
-}
-
-function getActiveUsers() {
-  return users.filter((user) => user.active);
-}
-
-function getUsersByRole(role) {
-  return users.filter((user) => user.role === role);
-}
-
-function countActiveUsers() {
-  return users.filter((user) => user.active).length;
-}
-
-function deactivateUser(id) {
-  const user = findUserById(id);
-
-  if (!user) {
-    return false;
-  }
-
   user.active = false;
   return true;
 }
