@@ -1,68 +1,35 @@
-const users = [
-  { id: 1, name: "Himanshi", role: "admin", active: true },
-  { id: 2, name: "Rahul", role: "user", active: true },
-  { id: 3, name: "Ananya", role: "user", active: false },
-  { id: 4, name: "Karan", role: "user", active: true }
+
+function calculateAverage(marks) {
+    let total = 0;
+
+    for (let i = 0; i < marks.length; i++) {
+        total += marks[i];
+    }
+
+    return total / marks.length;
+}
+
+function getResult(marks) {
+    const average = calculateAverage(marks);
+
+    if (average >= 40) {
+        return "Pass";
+    }
+
+    return "Fail";
+}
+
+function displayResults(students) {
+    students.forEach(student => {
+        const result = getResult(student.marks);
+        console.log(`${student.name}: ${result}`);
+    });
+}
+
+const students = [
+    { name: "Aman", marks: [70, 80, 90] },
+    { name: "Riya", marks: [20, 60, 50] },
+    { name: "Kabir", marks: [30, 35, 40] }
 ];
 
-  user.active = false;
-  return true;
-}
-
-function getUserSummary() {
-  const activeUsers = getActiveUsers();
-
-  return {
-    totalUsers: users.length,
-    activeUsers: activeUsers.length,
-    inactiveUsers: users.length - activeUsers.length,
-    admins: getUsersByRole("admin").length
-  };
-}
-
-function searchUsers(searchTerm) {
-  const term = searchTerm.toLowerCase();
-
-  return users.filter((user) =>
-    user.name.toLowerCase().includes(term)
-  );
-}
-
-function canAccessDashboard(id) {
-  const user = findUserById(id);
-
-  if (!user) {
-    return false;
-  }
-
-  return user.active && user.role === "admin";
-}
-
-function getActiveUserNames() {
-  return getActiveUsers().map((user) => user.name);
-}
-
-// BUG: This should return the average number of users
-// per role, but it is calculating the total number of users.
-function getAverageUsersPerRole() {
-  const roles = [...new Set(users.map((user) => user.role))];
-
-  if (roles.length === 0) {
-    return 0;
-  }
-
-  return users.length / roles.length;
-}
-
-module.exports = {
-  findUserById,
-  getActiveUsers,
-  getUsersByRole,
-  countActiveUsers,
-  deactivateUser,
-  getUserSummary,
-  searchUsers,
-  canAccessDashboard,
-  getActiveUserNames,
-  getAverageUsersPerRole
-};
+displayResults(students);
