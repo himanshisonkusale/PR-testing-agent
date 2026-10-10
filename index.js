@@ -1,5 +1,6 @@
 
 function calculateAverage(marks) {
+    if (marks.length === 0) return 0;
     let total = 0;
 
     for (let i = 0; i < marks.length; i++) {
