@@ -12,7 +12,7 @@ function calculateAverage(marks) {
 function getResult(marks) {
     const average = calculateAverage(marks);
 
-    if (average >= 40) {
+    if (average >= 50) {
         return "Pass";
     }
 
